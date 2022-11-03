@@ -1,23 +1,155 @@
+//packages
+const inquirer = require('inquirer');
+const fs = require('fs');
 
 
-//Create html format.
 
-//parent class is employee,
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 
-//Its properties will be name, id, email, getName(), getId(), getEmail(), and getRole()&mdash;returns Employee
+//empt array to hold team members 
+myTeam = [];
+//todo: add validation
+//Make return if person selects no for no new employee
 
-//child classes are manager, engineer, and intern.
+//function to gather data on team members
+function employees() {
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'role',
+      message: "What is your employee's role?",
+      choices: ['Manager', 'Engineer', 'Intern']
+    }
+    ])
 
-//Create basic test first for each class first. Write to see if it returns the data. 
+    
+    .then(({role, name, id, email}) => {
+      if (role === 'Manager') {
+        return inquirer.prompt 
+        ([
+          {
+            type: 'input',
+            name: 'name',
+            message: "What is your manager's name?",
+          },
+          {
+            type: 'input',
+            name: 'id',
+            message: "What is your manager's id?",
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: "What is your manager's email?",
+          },
+          {
+            type: 'input',
+            name: 'officeNumber',
+            message: "What is your manager's office number?"
+          },
+          {
+            type: 'list',
+            name: 'nextEmployee',
+            message: 'Would you like to add another employee?',
+            choices: ['Yes', 'No']
+          }
+        ])
+        .then (({input, nextEmployee}) => {
+          const manager = new Manager (input.name, input.id, input.email, input.officeNumber);
+          //adds manager data to myTeam array
+          myTeam.push(manager);
+          //will restart function if user wants to add another team member
+          if (nextEmployee = 'Yes') {
+            return employees();
+          }
+          else console.log(myTeam);
+        })
+      }
+      else if (role === 'Engineer') {
+        return inquirer.prompt 
+        ([
+          {
+            type: 'input',
+            name: 'name',
+            message: "What is your enigneer's name?",
+          },
+          {
+            type: 'input',
+            name: 'id',
+            message: "What is your engineer's id?",
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: "What is your engineer's email?",
+          },
+          {
+            type: 'input',
+            name: 'github',
+            message: "What is your engineer's GitHub?"
+          },
+          {
+            type: 'list',
+            name: 'nextEmployee',
+            message: 'Would you like to add another employee?',
+            choices: ['Yes', 'No']
+          }
+        ])
+          .then ((input, nextEmployee) => {
+            const engineer = new Engineer (input.name, input.id, input.email, input.github)
+            myTeam.push(engineer);
+            if (input.nextEmployee === 'Yes') {
+              return employees();
+            }
+            else console.log(myTeam);  
+          })
+      }
+      else if (role === 'Intern') {
+        return inquirer.prompt
+        ([
+          {
+            type: 'input',
+            name: 'name',
+            message: "What is your intern's name?",
+          },
+          {
+            type: 'input',
+            name: 'id',
+            message: "What is your intern's id?",
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: "What is your intern's email?",
+          },
+          {
+            type: 'input',
+            name: 'school',
+            message: "Where did your intern attend school?"
+          },
+          {
+            type: 'list',
+            name: 'nextEmployee',
+            message: 'Would you like to add another employee?',
+            choices: ['Yes', 'No']
+          }
+      ])
+        .then ((input, nextEmployee) => {
+          const intern = new Intern (input.name, input.id, input.email, input.school)
+          myTeam.push(intern);
+          if (input.nextEmployee === 'Yes') {
+            return employees();
+          }
+          else console.log(myTeam);
+        })
+      }
+    })};
 
-//set up classes. If all passs, add test for errors.
+employees();
 
-//Manager class will have officeNumber and getRole()&mdash;overriden to return Manager
-
-//engineer class will have github&mdash;GitHub username, getGitHub(), getRole()&mdash;overriden to return Engineer
-
-//Intern class will have school, getSchool(), and getRole()&mdash; overriden to return Intern
-
+//Create html format
 //add validation if I want for user input to ensure it's in proper format  
 
 
@@ -36,4 +168,4 @@
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
-</div> */}
+</div>  */}
