@@ -1,0 +1,28 @@
+main {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border-style: solid;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+}
+
+#manager {
+    display: block;
+}
+
+#engineer {
+    display: block;
+}
+
+#intern {
+    display: block;
+}
