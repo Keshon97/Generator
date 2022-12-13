@@ -182,7 +182,6 @@ function init()  {
       }
     });
   })
-
 };
 
 init()
