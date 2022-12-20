@@ -12,7 +12,7 @@ const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
 //empt array to hold team members 
-myTeam = [];
+const myTeam = [];
 
 //function to gather data on team members
 function employees() {
@@ -148,7 +148,9 @@ function employees() {
             if (nextEmployee === 'Yes') {
               return employees();
             }
-            // else init
+            else {
+              init();
+            }
           })
       }
     })
@@ -169,9 +171,8 @@ function employees() {
 //     .catch((err) => 
 //       console.error(err));
 //     };
-function init()  {
-  employees()
-  .then((answers) => {
+function init(answers)  {
+  // .then((answers) => {
     console.log('answers', answers);
     fs.writeFile('./dist/sample.html', template(answers), (err) => {
       if (err)
@@ -181,9 +182,8 @@ function init()  {
         console.log(fs.readFileSync('./dist/sample.html', 'utf8'));
       }
     });
-  })
+  // })
 };
 
-init()
+employees();
 console.log(myTeam)
-module.exports = myTeam;

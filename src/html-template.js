@@ -1,8 +1,5 @@
-// const addTeam = myTeam => {
-// const myTeam = require('../index');
-
 const generateTeam = (myTeam) => {
-  
+
   const addManager = manager => {
     return `
       <div class="card" id = "manager" style="width: 18rem;">
@@ -15,7 +12,7 @@ const generateTeam = (myTeam) => {
           <li class="list-group-item"> Email: ${manager.getEmail}</li>
           <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
         </ul>
-      </div> `
+      </div> `;
   };
   
   const addEngineer = engineer => {
@@ -30,7 +27,7 @@ const generateTeam = (myTeam) => {
       <li class="list-group-item">Email: ${engineer.getEmail()}</li>
       <li class="list-group-item">Github: ${engineer.getGithub()}</li>
     </ul>
-  </div>`
+  </div>`;
   };
   
   const addIntern = intern => {
@@ -45,7 +42,7 @@ const generateTeam = (myTeam) => {
       <li class="list-group-item">Email: ${intern.getEmail()}</li>
       <li class="list-group-item">School: <label for="email">${intern.getShcool()}</label></li>
     </ul>
-  </div>  `
+  </div>  `;
   };
 
   let teamMembers = [];
@@ -76,9 +73,7 @@ const generateTeam = (myTeam) => {
     
   }
 
-
-
-module.exports = team => {
+module.exports = myTeam => {
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -95,7 +90,7 @@ module.exports = team => {
         <h1>My Team</h1>
       </header>
       <main>
-        ${generateTeam(team)}
+        ${generateTeam(myTeam)}
       </main>
     <footer>
       <p>I can code!</p>
@@ -105,12 +100,9 @@ module.exports = team => {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   </body>
 </html>
-  `
-}
-// }
+  `;
+};
 
-  // console.log(myTeam)
-  // generateTeam(myTeam)
 
 
 
